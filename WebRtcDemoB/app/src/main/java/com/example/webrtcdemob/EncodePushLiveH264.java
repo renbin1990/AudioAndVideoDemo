@@ -1,4 +1,4 @@
-package com.example.webrtcdemoa;
+package com.example.webrtcdemob;
 
 import android.media.MediaCodec;
 import android.media.MediaCodecInfo;
@@ -11,7 +11,7 @@ public class EncodePushLiveH264 {
 
     public static final int NAL_I = 0x5;
     public static final int NAL_SPS = 0x7;
-    private final SocketLive socketLive;
+    private final SocketLiveService socketLiveService;
     private MediaCodec mediaCodec;
     private int height;
     private int width;
@@ -20,9 +20,9 @@ public class EncodePushLiveH264 {
     private byte[] sps_pps_buf;
     private byte[] nv12;
 
-    public EncodePushLiveH264(SocketLive.SocketCallback socketCallback,int height, int width) {
-        this.socketLive  = new SocketLive( socketCallback);
-        socketLive.start();
+    public EncodePushLiveH264(SocketLiveService.SocketCallback socketCallback, int height, int width) {
+        this.socketLiveService = new SocketLiveService( socketCallback);
+        socketLiveService.start();
         this.height = height;
         this.width = width;
     }
@@ -113,12 +113,12 @@ public class EncodePushLiveH264 {
             System.arraycopy(sps_pps_buf, 0, newBuf, 0, sps_pps_buf.length);
             System.arraycopy(bytes, 0, newBuf, sps_pps_buf.length, bytes.length);
 //            编码层   推送出去
-            socketLive.sendData(newBuf);
+            socketLiveService.sendData(newBuf);
 
         }else {
             final byte[] bytes = new byte[bufferInfo.size];
             bb.get(bytes);
-            this.socketLive.sendData(bytes);
+            this.socketLiveService.sendData(bytes);
         }
     }
 

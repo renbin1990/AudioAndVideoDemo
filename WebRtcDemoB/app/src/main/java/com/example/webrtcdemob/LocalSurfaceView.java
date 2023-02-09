@@ -1,4 +1,4 @@
-package com.example.webrtcdemoa;
+package com.example.webrtcdemob;
 
 import android.content.Context;
 import android.hardware.Camera;
@@ -31,7 +31,7 @@ public class LocalSurfaceView extends SurfaceView implements SurfaceHolder.Callb
         startPreview();
     }
 
-    public void startCapture(SocketLive.SocketCallback socketCallback){
+    public void startCapture(SocketLiveService.SocketCallback socketCallback){
         //传递摄像头获取的宽高
         encodecPushLiveH264 = new EncodePushLiveH264(socketCallback,size.height,size.width);
         encodecPushLiveH264.startLive();

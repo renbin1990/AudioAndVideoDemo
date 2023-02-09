@@ -1,4 +1,4 @@
-package com.example.webrtcdemoa;
+package com.example.webrtcdemob;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
@@ -13,7 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class MainActivity extends AppCompatActivity implements SocketLive.SocketCallback {
+public class MainActivity extends AppCompatActivity implements SocketLiveService.SocketCallback {
 
     LocalSurfaceView localSurfaceView;
     Surface surface;
@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity implements SocketLive.Socket
 
     }
 
-    //开始通话
+    //开始童话
     public void connect(View view) {
         localSurfaceView.startCapture(this);
     }
