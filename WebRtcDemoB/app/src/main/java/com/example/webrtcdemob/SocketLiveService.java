@@ -54,7 +54,7 @@ public class SocketLiveService {
         public void onMessage(WebSocket conn, String message) {
 
         }
-        //老张发送过来
+        //收到消息
         @Override
         public void onMessage(WebSocket conn, ByteBuffer bytes) {
             Log.i("renbin", "消息长度  : " + bytes.remaining());
